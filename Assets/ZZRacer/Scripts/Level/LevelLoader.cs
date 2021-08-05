@@ -26,6 +26,7 @@ public static class LevelLoader
 
     public enum SceneName
     {
+        None,
         ZzSplash,
         ZzGameplay
     }

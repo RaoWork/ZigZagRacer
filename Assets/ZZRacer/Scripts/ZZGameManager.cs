@@ -58,21 +58,15 @@ public class ZZGameManager : MonoBehaviour
         if (GameObject.FindObjectOfType<ZZScoreManager>() != null)
             GameObject.FindObjectOfType<ZZScoreManager>().ScoreStoped();
 
-        SoundGameOver(); // Sound play
 
-        Invoke("ReloadGame", 0.5f); // Reload Game
+        Invoke("GameOverGameUI", 0.5f); // Reload Game
     }
 
 
-    void ReloadGame()
+    void GameOverGameUI()
     {
-        string sceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(sceneName);
+        if (GameObject.FindObjectOfType<GameOverUI>() != null)
+            GameObject.FindObjectOfType<GameOverUI>().Setup();
     }
 
-    void SoundGameOver()
-    {
-        if (GameObject.FindObjectOfType<SoundManager>() != null)
-            GameObject.FindObjectOfType<SoundManager>().GameOverPlay();
-    }
 }

@@ -5,10 +5,11 @@ using UnityEngine;
 public class ZZScoreManager : MonoBehaviour
 {
 
+
     public ZzScore zzScore;
 
     private float time = 0.2f;
-    Coroutine updateScore = null;
+    Coroutine CorUpdatedScore = null;
 
 
     private void Awake()
@@ -18,16 +19,16 @@ public class ZZScoreManager : MonoBehaviour
 
     public void ScoreStarted()
     {
-        if (updateScore != null)
-            StopCoroutine(updateScore);
+        if (CorUpdatedScore != null)
+            StopCoroutine(CorUpdatedScore);
 
-        updateScore = StartCoroutine(UpdateScoreAmount());
+        CorUpdatedScore = StartCoroutine(UpdateScoreAmount());
     }
 
     public void ScoreStoped()
     {
-        if (updateScore != null)
-            StopCoroutine(updateScore);
+        if (CorUpdatedScore != null)
+            StopCoroutine(CorUpdatedScore);
     }
 
     IEnumerator UpdateScoreAmount()

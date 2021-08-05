@@ -16,6 +16,11 @@ public class LevelController : MonoBehaviour
     { 
     }
 
+    public void LoadLevel(LevelLoader.SceneName _customLevelName)
+    {
+        LevelLoader.Load(_customLevelName);
+    }
+
     public void LoadLevel()
     {
         LevelLoader.Load(levelName);

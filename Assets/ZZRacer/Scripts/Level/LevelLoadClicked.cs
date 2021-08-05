@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LevelLoadClicked : MonoBehaviour
 {
 
+    public LevelLoader.SceneName levelName;
     private Button btn;
 
 
@@ -20,11 +21,25 @@ public class LevelLoadClicked : MonoBehaviour
 
         btn.onClick.AddListener(() =>
         {
-            if (GameObject.FindObjectOfType<LevelController>() == null)
-                return;
-
-            LevelController levelController = GameObject.FindObjectOfType<LevelController>();
-            levelController.LoadLevel();
+            SelectedLoadLevel();
         });
+    }
+
+    void SelectedLoadLevel()
+    {
+        if (GameObject.FindObjectOfType<LevelController>() == null)
+            return;
+
+        LevelController levelController = GameObject.FindObjectOfType<LevelController>();
+
+        switch (levelName)
+        {
+            case LevelLoader.SceneName.None:
+                levelController.LoadLevel();
+                break;
+            default:
+                levelController.LoadLevel(levelName);
+                break;
+        }
     }
 }
